@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beneath the Surface</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:linear-gradient(to bottom, #4facfe, #001f3f);
+      color:white;
+      overflow-x:hidden;
+    }
+
+    section{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+      padding:20px;
+      position:relative;
+    }
+
+    h1{
+      font-size:4rem;
+      margin-bottom:20px;
+      animation:float 3s ease-in-out infinite;
+    }
+
+    h2{
+      font-size:2.5rem;
+      margin-bottom:20px;
+    }
+
+    p{
+      max-width:700px;
+      line-height:1.8;
+      font-size:1.2rem;
+    }
+
+    .scroll{
+      margin-top:30px;
+      font-size:1rem;
+      opacity:0.8;
+      animation:bounce 2s infinite;
+    }
+
+    .hidden{
+      opacity:0;
+      transform:translateY(80px);
+      transition:1s;
+    }
+
+    .show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .bubble{
+      position:absolute;
+      bottom:-100px;
+      background:rgba(255,255,255,0.3);
+      border-radius:50%;
+      animation:rise linear infinite;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.1);
+      padding:30px;
+      border-radius:20px;
+      backdrop-filter:blur(5px);
+      width:80%;
+      max-width:700px;
+      box-shadow:0 0 20px rgba(0,0,0,0.3);
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      background:#00111f;
+    }
+
+    @keyframes rise{
+      from{
+        transform:translateY(0);
+      }
+      to{
+        transform:translateY(-120vh);
+      }
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-10px);
+      }
+    }
+
+    @keyframes bounce{
+      0%,100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(10px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bubble" style="left:10%; width:20px; height:20px; animation-duration:8s;"></div>
+  <div class="bubble" style="left:30%; width:40px; height:40px; animation-duration:12s;"></div>
+  <div class="bubble" style="left:50%; width:25px; height:25px; animation-duration:10s;"></div>
+  <div class="bubble" style="left:70%; width:35px; height:35px; animation-duration:14s;"></div>
+  <div class="bubble" style="left:90%; width:15px; height:15px; animation-duration:7s;"></div>
+
+  <section>
+    <h1>Beneath the Surface</h1>
+
+    <p>
+      Things are not always what they seem.
+      Under every surface, there are hidden emotions,
+      stories, and truths waiting to be discovered.
+    </p>
+
+    <div class="scroll">
+      Scroll Down ↓
+    </div>
+  </section>
+
+  <section class="hidden">
+    <div class="card">
+      <h2>More Than What We See</h2>
+
+      <p>
+        People may smile on the outside while struggling inside.
+        Just like the deep ocean, humans have layers beneath the surface
+        that are invisible at first glance.
+      </p>
+    </div>
+  </section>
+
+  <section class="hidden">
+    <div class="card">
+      <h2>The Message</h2>
+
+      <p>
+        This project reminds us to be kind and understanding because
+        everyone has hidden experiences beneath the surface.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    Created for School Hackathon 2026
+  </footer>
+
+  <script>
+    const hiddenElements = document.querySelectorAll(".hidden");
+
+    window.addEventListener("scroll", () => {
+      hiddenElements.forEach((el) => {
+        const position = el.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+
+        if(position < screenPosition){
+          el.classList.add("show");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
